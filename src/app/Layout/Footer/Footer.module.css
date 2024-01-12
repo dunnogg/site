@@ -1,0 +1,41 @@
+.Footer {
+    display: grid;
+    padding: 25px 30px;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px 40px;
+    grid-template-areas: "Copyright . UserAgree Conf";
+    color: var(--white);
+    font-size: 16px;
+    line-height: 20px;
+    text-decoration: none;
+}
+.Copyright {
+    grid-area: Copyright;
+    text-decoration: none;
+
+}
+.UserAgree {
+    grid-area: UserAgree;
+    text-decoration: none;
+}
+.Conf {
+    grid-area: Conf;
+    text-decoration: none;
+}
+.a {
+    text-decoration: none;
+    color:var(--white);
+}
+.Footer a:hover {
+    color: var(--gray-light);
+    text-decoration: none;
+}
+@media (max-width: 765px){
+    .Footer {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "Copyright"
+        "UserAgree"
+        "Conf";
+    }
+}

@@ -1,0 +1,12 @@
+.tag {
+    background: #DE0000;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    line-height: 12px;
+}
+
+.anter {
+    color: white !important;
+}

@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Напитки",
+      "categorylink": "drinks",
+      "description": "Санек Гей гамасек гыгыгы",
+      "id": "001"
+    },
+    {
+      "name": "Подбор энергоса",
+      "categorylink": "drinkchoice",
+      "description": "Поброс заначки гены букина",
+      "id": "002"
+    }
+  ]
+}
