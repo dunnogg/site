@@ -1,7 +1,7 @@
 import styles from './Sidebar.module.css';
 import {SidebarProps} from "./Sidebar.props";
-import {Menu} from "@/app/Layout/Sidebar/Menu/Menu";
 import React from "react";
+import {Menu} from "@/app/components/Sidebar/Menu/Menu";
 
 export const Sidebar = ({...props}: SidebarProps): JSX.Element => {
     return (

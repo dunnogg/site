@@ -3,9 +3,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import styles from './layout.module.css'
-import {Header} from "./Layout/Header/Header"
-import {Footer} from "./Layout/Footer/Footer"
-import {Sidebar} from "./Layout/Sidebar/Sidebar"
+import {Header} from "@/app/components/Header/Header";
+import {Sidebar} from "@/app/components/Sidebar/Sidebar";
+import {Footer} from "@/app/components/Footer/Footer";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
