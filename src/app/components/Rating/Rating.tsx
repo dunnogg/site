@@ -1,5 +1,6 @@
+"use client"
 import styles from './Rating.module.css';
-import {RatingProps} from "@/app/components/Rating/Rating.props";
+import {RatingProps} from "./Rating.props";
 import cn from "classnames";
 import Image from 'next/image';
 import {useEffect, useState, KeyboardEvent} from "react";

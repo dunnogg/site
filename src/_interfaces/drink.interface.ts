@@ -11,14 +11,12 @@ export interface ReviewModel {
     rating: number;
     createdAt: Date;
 }
-export interface ProductModel {
+export interface DrinkModel {
         _id: string;
         categories: string[];
         tags: string[];
         title: string;
-        link: string;
         price: number;
-        credit: number;
         oldPrice: number;
         description: string;
         characterstics: ProductCharacteristic[];

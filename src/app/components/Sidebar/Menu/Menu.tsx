@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from './Menu.module.css';
 
 interface IMenuProps {
-
 }
 export const Menu:React.FC<IMenuProps> = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/items');

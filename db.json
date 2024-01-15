@@ -12,5 +12,27 @@
       "description": "Поброс заначки гены букина",
       "id": "002"
     }
+  ],
+  "drinks": [
+    {
+      "id": "0",
+      "categories": "string[]",
+      "tags": "string[]",
+      "title": "Adrenaline Rush Zero Sugar",
+      "link": "string",
+      "price": "number",
+      "description": "string",
+      "characteristics": "ProductCharacteristic[]",
+      "createdAt": "Date",
+      "updatedAt": "Date",
+      "__v": "number",
+      "image": "/DrinkImages/DrinkImage.png",
+      "initialRating": "number",
+      "reviews": "ReviewModel[]",
+      "reviewCount": "number",
+      "reviewAvg": "number",
+      "advantages": "string",
+      "disadvantages": "string"
+    }
   ]
 }
