@@ -1,8 +1,8 @@
-import {Button} from "@/app/components/Button/Button";
-import {Htag} from "@/app/components/Htag/Htag";
-import {Tag} from "@/app/components/Tag/Tag";
+import {Button} from "@/_components/Button/Button";
+import {Htag} from "@/_components/Htag/Htag";
+import {Tag} from "@/_components/Tag/Tag";
 import {Rate} from 'antd';
-import {ItemCard} from "@/app/components/ItemCard/ItemCard";
+import {ItemCard} from "@/_components/ItemCard/ItemCard";
 export default function Home() {
     return (
       <div>

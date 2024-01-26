@@ -3,9 +3,9 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import styles from './layout.module.css'
-import {Header} from "@/app/components/Header/Header";
-import {Sidebar} from "@/app/components/Sidebar/Sidebar";
-import {Footer} from "@/app/components/Footer/Footer";
+import {Header} from "@/_components/Header/Header";
+import {Sidebar} from "@/_components/Sidebar/Sidebar";
+import {Footer} from "@/_components/Footer/Footer";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,12 +24,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <div className={styles.Wrapper}>
-      <Header className={styles.Header} />
+     <Header className={styles.Header} />
         <Sidebar className={styles.Sidebar} />
         <div className={styles.body}>
           {children}
         </div>
-      <Footer className={styles.Footer} />
+     <Footer className={styles.Footer} />
       </div>
       </body>
     </html>
