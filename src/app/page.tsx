@@ -1,5 +1,4 @@
 import {Button} from "@/_components/Button/Button";
-import {Htag} from "@/_components/Htag/Htag";
 import {Tag} from "@/_components/Tag/Tag";
 import {Rate} from 'antd';
 import {ItemCard} from "@/_components/ItemCard/ItemCard";

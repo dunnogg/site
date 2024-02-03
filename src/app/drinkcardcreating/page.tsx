@@ -4,57 +4,59 @@ import {Form, Input, Button, Space, Upload, UploadProps, UploadFile} from 'antd'
 import FormItem from "antd/es/form/FormItem";
 import {MinusCircleOutlined, PlusOutlined, UploadOutlined} from "@ant-design/icons";
 const App: React.FC = () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [file, setFile] = useState<File>()
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        if (!file) return
 
-    const handleChange: UploadProps['onChange'] = (info) => {
-        let newFileList = [...info.fileList];
-        newFileList = newFileList.slice(-1);
-
-        newFileList = newFileList.map((file) => {
-            if (file.response) {
-                file.url = file.response.url;
-            }
-            return file;
-        });
-
-        setFileList(newFileList);
+        try {
+            const data = new FormData()
+            data.append('file', file);
+            const res = await fetch('/api/drinkimage', {
+                method: 'POST',
+                body: data
+            })
+            if (!res.ok) throw new Error(await res.text())
+        } catch (e: any) {
+            console.error(e);
+            return alert('Ошибка загрузки изображения на сервер');
+        }
+    }
+    const validateMessages = {
+        required: "Заполните поле ${label}",
     };
     const props = {
-        action: 'https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188',
-        onChange: handleChange,
-        multiple: true,
+        rules: [{ required: true }]
     };
     async function getResult(value: object) {
         try {
             return await fetch(
                 'http://localhost:5000/drinks', {
-                    method: "post",
+                    method: "POST",
                     body: JSON.stringify(value),
                     headers: {
                         "Content-Type": "application/json"
                     }
                 })
         } catch (e) {
-            return[];
+            return alert('Ошибка отправки текстовых данных на сервер');
         }
     }
-    const onFinish = async (value: object) => {
+    const onFinish = async (value: any) => {
         let result = getResult(value);
-        console.log(fileList);
-        console.log(JSON.stringify(value));
+        let ImageRes = onSubmit(value.image);
     }
     return (
-       <Form name="form_item_path" layout="vertical" onFinish={onFinish}>
-            <FormItem name="title" label="Название">
+       <Form name="form_item_path" layout="vertical" onFinish={onFinish} validateMessages={validateMessages}>
+            <FormItem name="title" label="Название" {...props}>
                 <Input/>
             </FormItem>
-            <FormItem name="description" label="Описание">
+            <FormItem name="description" label="Описание" {...props}>
                 <Input.TextArea rows={4}/>
             </FormItem>
-            <FormItem name="advantages" label="Преимущества">
+            <FormItem name="advantages" label="Преимущества" {...props}>
                 <Input/>
             </FormItem>
-            <FormItem name="disadvantages" label="Недостатки">
+            <FormItem name="disadvantages" label="Недостатки" {...props}>
                 <Input/>
             </FormItem>
             <Form.List name="characteristics">
@@ -87,10 +89,12 @@ const App: React.FC = () => {
                     </>
                 )}
             </Form.List>
-           <Form.Item name="image" label={"Изображение"}>
-               <Upload {...props} fileList={fileList}>
-                   <Button icon={<UploadOutlined/>}></Button>
-               </Upload>
+           <Form.Item name='image' label={"Изображение"} {...props}>
+               <input
+                   type="file"
+                   name="file"
+                   onChange={(e) => setFile(e.target.files?.[0])}
+               />
            </Form.Item>
             <Button type="primary" htmlType="submit">
                 Submit

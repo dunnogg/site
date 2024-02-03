@@ -17,19 +17,17 @@ const DrinkSchema = new mongoose.Schema({
         title: String,
         description: String
     }],
-    image: {
-        file: {
-            name: String,
-        }
-    }
+    image: String
 });
-const Drink = mongoose.model('drinksdb', DrinkSchema);
+const Drink = mongoose.model('drink', DrinkSchema);
 const express = require('express');
 const app = express();
+const fs = require('fs');
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 app.post("/drinks", async (req: any, resp: any) => {
+    req.body.image = req.body.image.slice(12);
     try {
         const drink = new Drink(req.body);
         let result = drink.save();
@@ -38,4 +36,5 @@ app.post("/drinks", async (req: any, resp: any) => {
         resp.send("Something Went Wrong");
     }
 });
+
 app.listen(5000);

@@ -2,8 +2,7 @@ import styles from './ItemCard.module.css';
 import {DrinkModel} from "@/_interfaces/drink.interface";
 import {Htag} from "@/_components";
 export const ItemCard: React.FC = async () => {
-    const res = await fetch("mongodb://localhost:27017/DrinksCollection");
-    const data: DrinkModel = await res.json();
+    const data: DrinkModel = await getitems()
     return (
         <div>
             {
@@ -20,4 +19,12 @@ export const ItemCard: React.FC = async () => {
             }
         </div>
     )
+}
+async function getitems() {
+    try {
+        const res = await fetch("mongodb://localhost:27017/DrinksCollection");
+        return await res.json();
+    } catch(e) {
+        return [];
+    }
 }
